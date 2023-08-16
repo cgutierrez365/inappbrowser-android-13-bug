@@ -19,11 +19,37 @@
 
 // Wait for the deviceready event before using any of Cordova's device APIs.
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
+// var cordova;
 document.addEventListener('deviceready', onDeviceReady, false);
 
 function onDeviceReady() {
     // Cordova is now initialized. Have fun!
-
+    // window.open = cordova.InAppBrowser.open;
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
+    createPDF();
+    openPDF();
+}
+
+let testPDF;
+function createPDF() {
+
+    let html = "Testing PDF"
+
+    testPDF = pdf.fromData(html, { type: 'base64', fileName: 'healthreport.pdf' })
+    .then((status) => console.log('createPDF success->', status))
+    .catch((error) => console.log(error));
+
+    console.log(testPDF)
+}
+
+
+function openPDF() {
+
+    //Had to change function name to "open" and final argument to a string with no spaces with attributes separated by a comma
+    // let path = 'pages/appmarketplace'
+    // cordova.InAppBrowser.open('https://www.orchyd.com/' + path + '?appEmbedded=true', '_blank', 'location=no,toolbar=no,presentationstyle=pagesheet');
+
+    cordova.InAppBrowser.open(testPDF, '_blank', 'location=no,presentationstyle=fullscreen,toolbarcolor=#ffffff,toolbarposition=top,hidenavigationbuttons=yes,closebuttoncolor=#6973E5')
+    
 }
