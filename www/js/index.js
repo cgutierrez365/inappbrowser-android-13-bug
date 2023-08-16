@@ -27,7 +27,7 @@ function onDeviceReady() {
     // window.open = cordova.InAppBrowser.open;
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
-    createPDF();
+    // createPDF();
     openPDF();
 }
 
@@ -49,7 +49,7 @@ function openPDF() {
     //Had to change function name to "open" and final argument to a string with no spaces with attributes separated by a comma
     // let path = 'pages/appmarketplace'
     // cordova.InAppBrowser.open('https://www.orchyd.com/' + path + '?appEmbedded=true', '_blank', 'location=no,toolbar=no,presentationstyle=pagesheet');
-
-    cordova.InAppBrowser.open(testPDF, '_blank', 'location=no,presentationstyle=fullscreen,toolbarcolor=#ffffff,toolbarposition=top,hidenavigationbuttons=yes,closebuttoncolor=#6973E5')
+    let linkToPDF = "https://firebasestorage.googleapis.com/v0/b/orchyd-app.appspot.com/o/healthreports%2F1692220957251-4HjQek7Sx4TZNhYe2sDcCPSpJws2?alt=media&token=1e334d2b-283b-4e01-ad56-67ca716d6be3"
+    cordova.InAppBrowser.open(linkToPDF, '_blank', 'location=no,presentationstyle=fullscreen,toolbarcolor=#ffffff,toolbarposition=top,hidenavigationbuttons=yes,closebuttoncolor=#6973E5')
     
 }
